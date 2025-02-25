@@ -5,17 +5,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebRTC Video Chat with Chat</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h2> WebRTC Video Chat with Chat box </h2>
+    <!-- <h2> WebRTC Video Chat with Chat box </h2>
     <div id="video-grid"></div>
     <div id="chat-box">
         <input type="text" id="chat-input" placeholder="Nhập tin nhắn...">
         <button id="send-chat">Gửi</button>
         <div id="chat-messages"></div>
+    </div> -->
+
+    <div class="container-fluid main-container">
+        <div class="row">
+    
+            <!-- Cột trái: Video Call -->
+            <div class="col-md-6 video-container" id="video-grid">
+                <div class="video-box">
+                    <!-- <video id="local-video" autoplay muted></video> -->
+                    <!-- <video id="remote-video" autoplay></video> -->
+                </div>
+            </div>
+    
+            <!-- Cột phải: Chat Box -->
+            <div class="col-md-6 chat-container">
+                <div class="card chat-card">
+                    <div class="card-header chat-header">
+                        <p class="mb-0 fw-bold">Live Chat</p>
+                    </div>
+                    <div class="card-body chat-box" id="chat-messages">
+                        <!-- Tin nhắn hiển thị ở đây -->
+                    </div>
+                    <div class="card-footer">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="chat-input" placeholder="Nhập tin nhắn...">
+                            <button class="btn btn-info" id="send-chat">Gửi</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
     </div>
+
+
     <script src="https://unpkg.com/peerjs@1.3.2/dist/peerjs.min.js"></script>
 
     <script src="http://localhost:5000/socket.io/socket.io.js"></script>

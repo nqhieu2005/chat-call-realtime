@@ -4,21 +4,21 @@ const videoGrid = document.getElementById("video-grid");
 const myVideo = document.createElement("video");
 myVideo.muted = true;
 
-// Lấy quyền truy cập camera & micro
-navigator.mediaDevices.getUserMedia({
-    video: true,
-    audio: true,
-}).then((stream) => {
-    myVideo.srcObject = stream;
-    myVideo.play();
-    videoGrid.append(myVideo);
+    // Lấy quyền truy cập camera & micro
+    navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: true,
+    }).then((stream) => {
+        myVideo.srcObject = stream;
+        myVideo.play();
+        videoGrid.append(myVideo);
 
-    // Khi kết nối thành công, gửi ID Peer lên server
-    peer.on("open", (id) => {
-        socket.emit("join-room", "room1", id);
-        socket.id = id; // Lưu ID socket của chính mình
+        // Khi kết nối thành công, gửi ID Peer lên server
+        peer.on("open", (id) => {
+            socket.emit("join-room", "room1", id);
+            socket.id = id; // Lưu ID socket của chính mình
+        });
     });
-});
 
 // ===================== CHAT FUNCTIONALITY ===================== //
 
